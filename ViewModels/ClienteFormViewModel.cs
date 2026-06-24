@@ -8,6 +8,7 @@ using Microsoft.Maui.Controls;
 namespace AlmacenesPorAhi.ViewModels;
 
 [QueryProperty(nameof(ClienteId), "id")]
+[QueryProperty(nameof(ModoLectura), "ver")]
 public partial class ClienteFormViewModel : ObservableObject
 {
     private readonly IClienteService _service;
@@ -30,6 +31,17 @@ public partial class ClienteFormViewModel : ObservableObject
         if (value > 0)
             _ = CargarClienteAsync(value);
     }
+
+    [ObservableProperty]
+    private bool modoLectura;
+
+    partial void OnModoLecturaChanged(bool value)
+    {
+        if (value && ClienteId > 0)
+            Titulo = "Ver Cliente";
+    }
+
+    public bool ModoEdicion => !ModoLectura;
 
     [ObservableProperty] private string nombre = string.Empty;
     [ObservableProperty] private string apellido = string.Empty;
