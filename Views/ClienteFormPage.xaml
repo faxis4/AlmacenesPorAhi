@@ -28,16 +28,14 @@
                             <Label Text="Nombre" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Entry Text="{Binding Nombre}" Placeholder="Ej: Juan"
-                                       IsReadOnly="{Binding ModoLectura}" />
+                                <Entry Text="{Binding Nombre}" Placeholder="Ej: Juan" />
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout Grid.Column="1" Spacing="6">
                             <Label Text="Apellido" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Entry Text="{Binding Apellido}" Placeholder="Ej: Perez"
-                                       IsReadOnly="{Binding ModoLectura}" />
+                                <Entry Text="{Binding Apellido}" Placeholder="Ej: Perez" />
                             </Border>
                         </VerticalStackLayout>
                     </Grid>
@@ -47,16 +45,14 @@
                             <Label Text="Tipo documento" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Picker ItemsSource="{Binding TiposDocumento}" SelectedItem="{Binding TipoDocumento}" Title="Seleccionar"
-                                        IsEnabled="{Binding ModoEdicion}" />
+                                <Picker ItemsSource="{Binding TiposDocumento}" SelectedItem="{Binding TipoDocumento}" Title="Seleccionar" />
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout Grid.Column="1" Spacing="6">
                             <Label Text="Numero documento" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Entry Text="{Binding NumeroDocumento}" Placeholder="Ej: 12.345.678-9"
-                                       IsReadOnly="{Binding ModoLectura}" />
+                                <Entry Text="{Binding NumeroDocumento}" Placeholder="Ej: 12.345.678-9" />
                             </Border>
                         </VerticalStackLayout>
                     </Grid>
@@ -67,8 +63,7 @@
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
                                 <Entry Text="{Binding Telefono}" Placeholder="Ej: +56 9 1234 5678"
-                                       Keyboard="Telephone"
-                                       IsReadOnly="{Binding ModoLectura}" />
+                                       Keyboard="Telephone" />
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout Grid.Column="1" Spacing="6">
@@ -76,8 +71,7 @@
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
                                 <Entry Text="{Binding Email}" Placeholder="Ej: juan@correo.cl"
-                                       Keyboard="Email"
-                                       IsReadOnly="{Binding ModoLectura}" />
+                                       Keyboard="Email" />
                             </Border>
                         </VerticalStackLayout>
                     </Grid>
@@ -87,8 +81,7 @@
                         <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                 StrokeShape="RoundRectangle 10" Padding="10,4">
                             <Editor Text="{Binding Direccion}" Placeholder="Direccion del cliente (opcional)"
-                                    AutoSize="TextChanges" HeightRequest="70"
-                                    IsReadOnly="{Binding ModoLectura}" />
+                                    AutoSize="TextChanges" HeightRequest="70" />
                         </Border>
                     </VerticalStackLayout>
 
@@ -96,8 +89,7 @@
                         <Label Text="Estado" FontAttributes="Bold" />
                         <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                 StrokeShape="RoundRectangle 10" Padding="10,0">
-                            <Picker ItemsSource="{Binding Estados}" SelectedItem="{Binding Estado}" Title="Estado"
-                                    IsEnabled="{Binding ModoEdicion}" />
+                            <Picker ItemsSource="{Binding Estados}" SelectedItem="{Binding Estado}" Title="Estado" />
                         </Border>
                     </VerticalStackLayout>
                 </VerticalStackLayout>
@@ -106,10 +98,9 @@
             <Button Text="Guardar" HeightRequest="54"
                     BackgroundColor="#E76F51" TextColor="#FFFFFF"
                     FontAttributes="Bold" FontSize="16"
-                    Command="{Binding GuardarCommand}"
-                    IsVisible="{Binding ModoEdicion}" />
+                    Command="{Binding GuardarCommand}" />
 
-            <Button Text="Volver" HeightRequest="48"
+            <Button Text="Cancelar" HeightRequest="48"
                     BackgroundColor="Transparent" TextColor="#7A847C"
                     BorderColor="#D8D0C2" BorderWidth="1"
                     Command="{Binding CancelarCommand}" />

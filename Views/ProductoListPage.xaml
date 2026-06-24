@@ -117,18 +117,13 @@
 
                             <BoxView HeightRequest="1" Color="#EAE3D9" />
 
-                            <Grid ColumnDefinitions="*,*,*" Padding="8" ColumnSpacing="8">
-                                <Button Grid.Column="0" Text="Ver" FontSize="13"
-                                        BackgroundColor="Transparent" TextColor="#2D4236"
-                                        BorderColor="#D4A373" BorderWidth="1"
-                                        Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.VerCommand}"
-                                        CommandParameter="{Binding .}" />
-                                <Button Grid.Column="1" Text="Editar" FontSize="13"
+                            <Grid ColumnDefinitions="*,*" Padding="8" ColumnSpacing="8">
+                                <Button Grid.Column="0" Text="Editar" FontSize="13"
                                         BackgroundColor="Transparent" TextColor="#2D4236"
                                         BorderColor="#2D4236" BorderWidth="1"
                                         Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.EditarCommand}"
                                         CommandParameter="{Binding .}" />
-                                <Button Grid.Column="2" Text="Eliminar" FontSize="13"
+                                <Button Grid.Column="1" Text="Eliminar" FontSize="13"
                                         BackgroundColor="Transparent" TextColor="#A4453A"
                                         BorderColor="#E1B3A8" BorderWidth="1"
                                         Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.EliminarCommand}"

@@ -98,13 +98,6 @@ public partial class ProductoListViewModel : ObservableObject
         await Shell.Current.GoToAsync(nameof(ProductoFormPage));
     }
 
-    [RelayCommand]
-    private async Task VerAsync(Producto? producto)
-    {
-        if (producto is null) return;
-        await Shell.Current.GoToAsync($"{nameof(ProductoFormPage)}?id={producto.Id}&ver=true");
-    }
-
     // ----- COMANDO: Editar producto seleccionado ----------------------------
     // Navega al formulario pasando el Id del producto como parametro de ruta.
     [RelayCommand]
