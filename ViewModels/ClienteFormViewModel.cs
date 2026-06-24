@@ -69,7 +69,8 @@ public partial class ClienteFormViewModel : ObservableObject
         Preferencias = c.Preferencias;
         Estado = c.Estado;
         _fechaRegistro = c.FechaRegistro;
-        Titulo = "Editar Cliente";
+        if (!ModoLectura)
+            Titulo = "Editar Cliente";
     }
 
     [RelayCommand]

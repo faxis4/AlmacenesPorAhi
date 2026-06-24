@@ -40,6 +40,12 @@
                                 IsVisible="{Binding ModoEdicion}" />
                     </VerticalStackLayout>
 
+                    <Border Background="#D4A373" StrokeThickness="0" Padding="10,6"
+                            StrokeShape="RoundRectangle 10" IsVisible="{Binding ModoLectura}">
+                        <Label Text="SOLO LECTURA" FontAttributes="Bold" FontSize="13"
+                               TextColor="#FFFFFF" HorizontalOptions="Center" />
+                    </Border>
+
                     <Label Text="Datos del producto" FontAttributes="Bold"
                            FontSize="18" TextColor="#2D4236" />
 

@@ -87,7 +87,8 @@ public partial class ProductoFormViewModel : ObservableObject
         Estado = p.Estado;
         ImagenUrl = p.ImagenUrl;
         _fechaRegistro = p.FechaRegistro;
-        Titulo = "Editar Producto";
+        if (!ModoLectura)
+            Titulo = "Editar Producto";
     }
 
     // COMANDO: seleccionar una foto desde el equipo.
