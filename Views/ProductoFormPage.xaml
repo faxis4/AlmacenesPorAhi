@@ -41,7 +41,8 @@
                         <Button Text="Seleccionar foto" FontSize="13"
                                 BackgroundColor="Transparent" TextColor="#2D4236"
                                 BorderColor="#2D4236" BorderWidth="1"
-                                Command="{Binding SeleccionarFotoCommand}" />
+                                Command="{Binding SeleccionarFotoCommand}"
+                                IsVisible="{Binding ModoEdicion}" />
                     </VerticalStackLayout>
 
                     <Label Text="Datos del producto" FontAttributes="Bold"
@@ -52,7 +53,8 @@
                         <Label Text="Nombre" FontAttributes="Bold" />
                         <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                 StrokeShape="RoundRectangle 10" Padding="10,0">
-                            <Entry Text="{Binding Nombre}" Placeholder="Ej: Polera basica" />
+                                <Entry Text="{Binding Nombre}" Placeholder="Ej: Polera basica"
+                                       IsReadOnly="{Binding ModoLectura}" />
                         </Border>
                     </VerticalStackLayout>
 
@@ -62,7 +64,8 @@
                         <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                 StrokeShape="RoundRectangle 10" Padding="10,4">
                             <Editor Text="{Binding Descripcion}" Placeholder="Descripcion del producto (opcional)"
-                                    AutoSize="TextChanges" HeightRequest="70" />
+                                    AutoSize="TextChanges" HeightRequest="70"
+                                    IsReadOnly="{Binding ModoLectura}" />
                         </Border>
                     </VerticalStackLayout>
 
@@ -71,7 +74,8 @@
                         <Label Text="Categoria" FontAttributes="Bold" />
                         <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                 StrokeShape="RoundRectangle 10" Padding="10,0">
-                            <Entry Text="{Binding Categoria}" Placeholder="Ej: Poleras, Pantalones..." />
+                            <Entry Text="{Binding Categoria}" Placeholder="Ej: Poleras, Pantalones..."
+                                   IsReadOnly="{Binding ModoLectura}" />
                         </Border>
                     </VerticalStackLayout>
 
@@ -81,14 +85,16 @@
                             <Label Text="Talla" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Picker ItemsSource="{Binding Tallas}" SelectedItem="{Binding Talla}" Title="Talla" />
+                                <Picker ItemsSource="{Binding Tallas}" SelectedItem="{Binding Talla}" Title="Talla"
+                                        IsEnabled="{Binding ModoEdicion}" />
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout Grid.Column="1" Spacing="6">
                             <Label Text="Color" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Entry Text="{Binding Color}" Placeholder="Ej: Azul" />
+                                <Entry Text="{Binding Color}" Placeholder="Ej: Azul"
+                                       IsReadOnly="{Binding ModoLectura}" />
                             </Border>
                         </VerticalStackLayout>
                     </Grid>
@@ -99,14 +105,16 @@
                             <Label Text="Precio (CLP)" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Entry Text="{Binding Precio}" Keyboard="Numeric" Placeholder="0" />
+                                <Entry Text="{Binding Precio}" Keyboard="Numeric" Placeholder="0"
+                                       IsReadOnly="{Binding ModoLectura}" />
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout Grid.Column="1" Spacing="6">
                             <Label Text="Stock" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Entry Text="{Binding Stock}" Keyboard="Numeric" Placeholder="0" />
+                                <Entry Text="{Binding Stock}" Keyboard="Numeric" Placeholder="0"
+                                       IsReadOnly="{Binding ModoLectura}" />
                             </Border>
                         </VerticalStackLayout>
                     </Grid>
@@ -116,7 +124,8 @@
                         <Label Text="Estado" FontAttributes="Bold" />
                         <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                 StrokeShape="RoundRectangle 10" Padding="10,0">
-                            <Picker ItemsSource="{Binding Estados}" SelectedItem="{Binding Estado}" Title="Estado" />
+                            <Picker ItemsSource="{Binding Estados}" SelectedItem="{Binding Estado}" Title="Estado"
+                                    IsEnabled="{Binding ModoEdicion}" />
                         </Border>
                     </VerticalStackLayout>
                 </VerticalStackLayout>
@@ -126,9 +135,10 @@
             <Button Text="Guardar" HeightRequest="54"
                     BackgroundColor="#E76F51" TextColor="#FFFFFF"
                     FontAttributes="Bold" FontSize="16"
-                    Command="{Binding GuardarCommand}" />
+                    Command="{Binding GuardarCommand}"
+                    IsVisible="{Binding ModoEdicion}" />
 
-            <Button Text="Cancelar" HeightRequest="48"
+            <Button Text="Volver" HeightRequest="48"
                     BackgroundColor="Transparent" TextColor="#7A847C"
                     BorderColor="#D8D0C2" BorderWidth="1"
                     Command="{Binding CancelarCommand}" />

@@ -15,6 +15,7 @@ namespace AlmacenesPorAhi.ViewModels;
 // [QueryProperty] recibe el "id" enviado en la navegacion: 0 = nuevo producto.
 // ============================================================================
 [QueryProperty(nameof(ProductoId), "id")]
+[QueryProperty(nameof(ModoLectura), "ver")]
 public partial class ProductoFormViewModel : ObservableObject
 {
     private readonly IProductoService _service;
@@ -39,6 +40,17 @@ public partial class ProductoFormViewModel : ObservableObject
         if (value > 0)
             _ = CargarProductoAsync(value);
     }
+
+    [ObservableProperty]
+    private bool modoLectura;
+
+    partial void OnModoLecturaChanged(bool value)
+    {
+        if (value && ProductoId > 0)
+            Titulo = "Ver Producto";
+    }
+
+    public bool ModoEdicion => !ModoLectura;
 
     // Campos enlazados al formulario.
     [ObservableProperty] private string nombre = string.Empty;
