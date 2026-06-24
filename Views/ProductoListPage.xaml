@@ -119,7 +119,7 @@
 
                             <Grid ColumnDefinitions="*,*,*" Padding="8" ColumnSpacing="8">
                                 <Button Grid.Column="0" Text="Ver" FontSize="13"
-                                        BackgroundColor="Transparent" TextColor="#2D4236"
+                                        BackgroundColor="Transparent" TextColor="#D4A373"
                                         BorderColor="#D4A373" BorderWidth="1"
                                         Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.VerCommand}"
                                         CommandParameter="{Binding .}" />
