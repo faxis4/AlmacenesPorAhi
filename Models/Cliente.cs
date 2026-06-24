@@ -50,4 +50,7 @@ public class Cliente
 
     [Display(Name = "Nombre completo")]
     public string NombreCompleto => $"{Nombre} {Apellido}";
+
+    [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+    public string Inicial => string.IsNullOrWhiteSpace(Nombre) ? "?" : Nombre[0].ToString();
 }
