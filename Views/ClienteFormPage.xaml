@@ -23,6 +23,15 @@
                     <Label Text="Datos del cliente" FontAttributes="Bold"
                            FontSize="18" TextColor="#2D4236" />
 
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="RUT" FontAttributes="Bold" />
+                        <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10" Padding="10,0">
+                            <Entry Text="{Binding Rut}" Placeholder="Ej: 12.345.678-9"
+                                   IsReadOnly="{Binding ModoLectura}" />
+                        </Border>
+                    </VerticalStackLayout>
+
                     <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
                         <VerticalStackLayout Grid.Column="0" Spacing="6">
                             <Label Text="Nombre" FontAttributes="Bold" />
@@ -33,50 +42,40 @@
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout Grid.Column="1" Spacing="6">
-                            <Label Text="Apellido" FontAttributes="Bold" />
+                            <Label Text="Apellido paterno" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Entry Text="{Binding Apellido}" Placeholder="Ej: Perez"
+                                <Entry Text="{Binding ApellidoPaterno}" Placeholder="Ej: Perez"
                                        IsReadOnly="{Binding ModoLectura}" />
                             </Border>
                         </VerticalStackLayout>
                     </Grid>
 
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-                        <VerticalStackLayout Grid.Column="0" Spacing="6">
-                            <Label Text="Tipo documento" FontAttributes="Bold" />
-                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                    StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Picker ItemsSource="{Binding TiposDocumento}" SelectedItem="{Binding TipoDocumento}" Title="Seleccionar"
-                                        IsEnabled="{Binding ModoEdicion}" />
-                            </Border>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Column="1" Spacing="6">
-                            <Label Text="Numero documento" FontAttributes="Bold" />
-                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                    StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Entry Text="{Binding NumeroDocumento}" Placeholder="Ej: 12.345.678-9"
-                                       IsReadOnly="{Binding ModoLectura}" />
-                            </Border>
-                        </VerticalStackLayout>
-                    </Grid>
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Apellido materno" FontAttributes="Bold" />
+                        <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10" Padding="10,0">
+                            <Entry Text="{Binding ApellidoMaterno}" Placeholder="Ej: Gonzalez (opcional)"
+                                   IsReadOnly="{Binding ModoLectura}" />
+                        </Border>
+                    </VerticalStackLayout>
 
                     <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
                         <VerticalStackLayout Grid.Column="0" Spacing="6">
-                            <Label Text="Telefono" FontAttributes="Bold" />
-                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                    StrokeShape="RoundRectangle 10" Padding="10,0">
-                                <Entry Text="{Binding Telefono}" Placeholder="Ej: +56 9 1234 5678"
-                                       Keyboard="Telephone"
-                                       IsReadOnly="{Binding ModoLectura}" />
-                            </Border>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Column="1" Spacing="6">
                             <Label Text="Email" FontAttributes="Bold" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 10" Padding="10,0">
                                 <Entry Text="{Binding Email}" Placeholder="Ej: juan@correo.cl"
                                        Keyboard="Email"
+                                       IsReadOnly="{Binding ModoLectura}" />
+                            </Border>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="Telefono" FontAttributes="Bold" />
+                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 10" Padding="10,0">
+                                <Entry Text="{Binding Telefono}" Placeholder="Ej: +56 9 1234 5678"
+                                       Keyboard="Telephone"
                                        IsReadOnly="{Binding ModoLectura}" />
                             </Border>
                         </VerticalStackLayout>
@@ -88,6 +87,16 @@
                                 StrokeShape="RoundRectangle 10" Padding="10,4">
                             <Editor Text="{Binding Direccion}" Placeholder="Direccion del cliente (opcional)"
                                     AutoSize="TextChanges" HeightRequest="70"
+                                    IsReadOnly="{Binding ModoLectura}" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Preferencias" FontAttributes="Bold" />
+                        <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10" Padding="10,4">
+                            <Editor Text="{Binding Preferencias}" Placeholder="Preferencias del cliente (opcional)"
+                                    AutoSize="TextChanges" HeightRequest="60"
                                     IsReadOnly="{Binding ModoLectura}" />
                         </Border>
                     </VerticalStackLayout>

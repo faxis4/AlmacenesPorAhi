@@ -66,9 +66,9 @@
                                     <Label Text="{Binding NombreCompleto}" FontAttributes="Bold"
                                            FontSize="16" TextColor="#2D4236" />
                                     <HorizontalStackLayout Spacing="8">
-                                        <Label Text="{Binding Estado}" FontSize="12" TextColor="#7A847C" />
+                                        <Label Text="{Binding Rut}" FontSize="12" TextColor="#7A847C" />
                                         <Label Text="·" FontSize="12" TextColor="#D8D0C2" />
-                                        <Label Text="{Binding Telefono}" FontSize="12" TextColor="#7A847C" />
+                                        <Label Text="{Binding Estado}" FontSize="12" TextColor="#7A847C" />
                                     </HorizontalStackLayout>
                                     <Label Text="{Binding Email}" FontSize="12" TextColor="#7A847C" />
                                 </VerticalStackLayout>

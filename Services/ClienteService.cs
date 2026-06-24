@@ -20,7 +20,7 @@ public class ClienteService : IClienteService
         return await db.Clientes
             .AsNoTracking()
             .OrderBy(c => c.Nombre)
-            .ThenBy(c => c.Apellido)
+            .ThenBy(c => c.ApellidoPaterno)
             .ToListAsync();
     }
 

@@ -63,36 +63,39 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Cliente>().HasData(
             new Cliente
             {
-                Id = 1, Nombre = "Maria", Apellido = "Gonzalez", TipoDocumento = "RUT",
-                NumeroDocumento = "12.345.678-9", Telefono = "+56 9 1234 5678",
+                Id = 1, Rut = "12.345.678-9", Nombre = "Maria", ApellidoPaterno = "Gonzalez",
+                ApellidoMaterno = "Lopez", Telefono = "+56 9 1234 5678",
                 Email = "maria.gonzalez@correo.cl", Direccion = "Av. Siempre Viva 742, Santiago",
+                Preferencias = "Ropa de mujer, Accesorios",
                 Estado = "Activo", FechaRegistro = new DateTime(2024, 1, 20)
             },
             new Cliente
             {
-                Id = 2, Nombre = "Carlos", Apellido = "Muñoz", TipoDocumento = "RUT",
-                NumeroDocumento = "23.456.789-0", Telefono = "+56 9 2345 6789",
+                Id = 2, Rut = "23.456.789-0", Nombre = "Carlos", ApellidoPaterno = "Muñoz",
+                ApellidoMaterno = "Rojas", Telefono = "+56 9 2345 6789",
                 Email = "carlos.munoz@correo.cl", Direccion = "Calle Los Olivos 154, Valparaiso",
+                Preferencias = "Electronica, Deportes",
                 Estado = "Activo", FechaRegistro = new DateTime(2024, 2, 14)
             },
             new Cliente
             {
-                Id = 3, Nombre = "Ana", Apellido = "Lopez", TipoDocumento = "DNI",
-                NumeroDocumento = "34.567.890-1", Telefono = "+56 9 3456 7890",
+                Id = 3, Rut = "34.567.890-1", Nombre = "Ana", ApellidoPaterno = "Lopez",
+                Telefono = "+56 9 3456 7890",
                 Email = "ana.lopez@correo.cl", Direccion = "Pasaje El Sol 890, Concepcion",
                 Estado = "Activo", FechaRegistro = new DateTime(2024, 3, 8)
             },
             new Cliente
             {
-                Id = 4, Nombre = "Pedro", Apellido = "Ramirez", TipoDocumento = "RUT",
-                NumeroDocumento = "45.678.901-2", Telefono = "+56 9 4567 8901",
+                Id = 4, Rut = "45.678.901-2", Nombre = "Pedro", ApellidoPaterno = "Ramirez",
+                Telefono = "+56 9 4567 8901",
                 Estado = "Inactivo", FechaRegistro = new DateTime(2024, 4, 22)
             },
             new Cliente
             {
-                Id = 5, Nombre = "Sofia", Apellido = "Torres", TipoDocumento = "Pasaporte",
-                NumeroDocumento = "PT-123456", Telefono = "+56 9 5678 9012",
+                Id = 5, Rut = "PT-123456", Nombre = "Sofia", ApellidoPaterno = "Torres",
+                ApellidoMaterno = "Vargas", Telefono = "+56 9 5678 9012",
                 Email = "sofia.torres@correo.cl", Direccion = "Av. Del Mar 321, Viña del Mar",
+                Preferencias = "Libros, Musica",
                 Estado = "Activo", FechaRegistro = new DateTime(2024, 5, 5)
             }
         );

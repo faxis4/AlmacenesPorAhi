@@ -20,7 +20,6 @@ public partial class ClienteFormViewModel : ObservableObject
         _service = service;
     }
 
-    public List<string> TiposDocumento { get; } = new() { "RUT", "DNI", "Pasaporte", "Cedula" };
     public List<string> Estados { get; } = new() { "Activo", "Inactivo" };
 
     [ObservableProperty]
@@ -43,13 +42,14 @@ public partial class ClienteFormViewModel : ObservableObject
 
     public bool ModoEdicion => !ModoLectura;
 
+    [ObservableProperty] private string rut = string.Empty;
     [ObservableProperty] private string nombre = string.Empty;
-    [ObservableProperty] private string apellido = string.Empty;
-    [ObservableProperty] private string? numeroDocumento;
-    [ObservableProperty] private string? tipoDocumento;
-    [ObservableProperty] private string? telefono;
+    [ObservableProperty] private string apellidoPaterno = string.Empty;
+    [ObservableProperty] private string? apellidoMaterno;
     [ObservableProperty] private string? email;
+    [ObservableProperty] private string? telefono;
     [ObservableProperty] private string? direccion;
+    [ObservableProperty] private string? preferencias;
     [ObservableProperty] private string estado = "Activo";
 
     [ObservableProperty] private string titulo = "Nuevo Cliente";
@@ -59,13 +59,14 @@ public partial class ClienteFormViewModel : ObservableObject
         var c = await _service.ObtenerPorIdAsync(id);
         if (c is null) return;
 
+        Rut = c.Rut;
         Nombre = c.Nombre;
-        Apellido = c.Apellido;
-        NumeroDocumento = c.NumeroDocumento;
-        TipoDocumento = c.TipoDocumento;
-        Telefono = c.Telefono;
+        ApellidoPaterno = c.ApellidoPaterno;
+        ApellidoMaterno = c.ApellidoMaterno;
         Email = c.Email;
+        Telefono = c.Telefono;
         Direccion = c.Direccion;
+        Preferencias = c.Preferencias;
         Estado = c.Estado;
         _fechaRegistro = c.FechaRegistro;
         Titulo = "Editar Cliente";
@@ -74,27 +75,33 @@ public partial class ClienteFormViewModel : ObservableObject
     [RelayCommand]
     private async Task GuardarAsync()
     {
+        if (string.IsNullOrWhiteSpace(Rut))
+        {
+            await Shell.Current.DisplayAlert("Validacion", "El RUT es obligatorio.", "Aceptar");
+            return;
+        }
         if (string.IsNullOrWhiteSpace(Nombre))
         {
             await Shell.Current.DisplayAlert("Validacion", "El nombre es obligatorio.", "Aceptar");
             return;
         }
-        if (string.IsNullOrWhiteSpace(Apellido))
+        if (string.IsNullOrWhiteSpace(ApellidoPaterno))
         {
-            await Shell.Current.DisplayAlert("Validacion", "El apellido es obligatorio.", "Aceptar");
+            await Shell.Current.DisplayAlert("Validacion", "El apellido paterno es obligatorio.", "Aceptar");
             return;
         }
 
         var cliente = new Cliente
         {
             Id = ClienteId,
+            Rut = Rut.Trim(),
             Nombre = Nombre.Trim(),
-            Apellido = Apellido.Trim(),
-            NumeroDocumento = NumeroDocumento?.Trim(),
-            TipoDocumento = TipoDocumento,
-            Telefono = Telefono?.Trim(),
+            ApellidoPaterno = ApellidoPaterno.Trim(),
+            ApellidoMaterno = ApellidoMaterno?.Trim(),
             Email = Email?.Trim(),
+            Telefono = Telefono?.Trim(),
             Direccion = Direccion?.Trim(),
+            Preferencias = Preferencias?.Trim(),
             Estado = Estado,
             FechaRegistro = ClienteId == 0 ? DateTime.Now : _fechaRegistro
         };
