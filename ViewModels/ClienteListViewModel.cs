@@ -75,13 +75,6 @@ public partial class ClienteListViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task EditarAsync(Cliente? cliente)
-    {
-        if (cliente is null) return;
-        await Shell.Current.GoToAsync($"{nameof(ClienteFormPage)}?id={cliente.Id}");
-    }
-
-    [RelayCommand]
     private async Task EliminarAsync(Cliente? cliente)
     {
         if (cliente is null) return;

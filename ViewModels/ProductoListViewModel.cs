@@ -105,13 +105,6 @@ public partial class ProductoListViewModel : ObservableObject
         await Shell.Current.GoToAsync($"{nameof(ProductoFormPage)}?id={producto.Id}&ver=true");
     }
 
-    [RelayCommand]
-    private async Task EditarAsync(Producto? producto)
-    {
-        if (producto is null) return;
-        await Shell.Current.GoToAsync($"{nameof(ProductoFormPage)}?id={producto.Id}");
-    }
-
     // ----- COMANDO: Eliminar producto ---------------------------------------
     // Pide confirmacion al usuario y, si acepta, elimina y recarga la lista.
     [RelayCommand]
