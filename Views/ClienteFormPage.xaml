@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AlmacenesPorAhi.ViewModels"
+             x:Class="AlmacenesPorAhi.Views.ClienteFormPage"
+             x:DataType="vm:ClienteFormViewModel"
+             Title="{Binding Titulo}"
+             BackgroundColor="#FAF7F2">
+
+    <ScrollView>
+        <Grid>
+        <VerticalStackLayout Padding="16" Spacing="16"
+                             MaximumWidthRequest="600" HorizontalOptions="Center">
+
+            <Border Background="#FFFFFF" StrokeThickness="0" Padding="18"
+                    StrokeShape="RoundRectangle 16">
+                <Border.Shadow>
+                    <Shadow Brush="#2D4236" Opacity="0.08" Radius="12" Offset="0,4" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="16">
+
+                    <Label Text="Datos del cliente" FontAttributes="Bold"
+                           FontSize="18" TextColor="#2D4236" />
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="Nombre" FontAttributes="Bold" />
+                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 10" Padding="10,0">
+                                <Entry Text="{Binding Nombre}" Placeholder="Ej: Juan" />
+                            </Border>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="Apellido" FontAttributes="Bold" />
+                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 10" Padding="10,0">
+                                <Entry Text="{Binding Apellido}" Placeholder="Ej: Perez" />
+                            </Border>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="Tipo documento" FontAttributes="Bold" />
+                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 10" Padding="10,0">
+                                <Picker ItemsSource="{Binding TiposDocumento}" SelectedItem="{Binding TipoDocumento}" Title="Seleccionar" />
+                            </Border>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="Numero documento" FontAttributes="Bold" />
+                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 10" Padding="10,0">
+                                <Entry Text="{Binding NumeroDocumento}" Placeholder="Ej: 12.345.678-9" />
+                            </Border>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="Telefono" FontAttributes="Bold" />
+                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 10" Padding="10,0">
+                                <Entry Text="{Binding Telefono}" Placeholder="Ej: +56 9 1234 5678"
+                                       Keyboard="Telephone" />
+                            </Border>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="Email" FontAttributes="Bold" />
+                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 10" Padding="10,0">
+                                <Entry Text="{Binding Email}" Placeholder="Ej: juan@correo.cl"
+                                       Keyboard="Email" />
+                            </Border>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Direccion" FontAttributes="Bold" />
+                        <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10" Padding="10,4">
+                            <Editor Text="{Binding Direccion}" Placeholder="Direccion del cliente (opcional)"
+                                    AutoSize="TextChanges" HeightRequest="70" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Estado" FontAttributes="Bold" />
+                        <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10" Padding="10,0">
+                            <Picker ItemsSource="{Binding Estados}" SelectedItem="{Binding Estado}" Title="Estado" />
+                        </Border>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Guardar" HeightRequest="54"
+                    BackgroundColor="#E76F51" TextColor="#FFFFFF"
+                    FontAttributes="Bold" FontSize="16"
+                    Command="{Binding GuardarCommand}" />
+
+            <Button Text="Cancelar" HeightRequest="48"
+                    BackgroundColor="Transparent" TextColor="#7A847C"
+                    BorderColor="#D8D0C2" BorderWidth="1"
+                    Command="{Binding CancelarCommand}" />
+        </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
