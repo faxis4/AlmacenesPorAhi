@@ -23,12 +23,10 @@ public class AppDbContext : DbContext
     // Tabla de clientes.
     public DbSet<Cliente> Clientes => Set<Cliente>();
 
-    // Datos de semilla: productos de ejemplo que se insertan al crear la BD.
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // Fechas fijas (no DateTime.Now) para que la semilla sea determinista.
         modelBuilder.Entity<Producto>().HasData(
             new Producto
             {
@@ -59,6 +57,43 @@ public class AppDbContext : DbContext
                 Id = 5, Nombre = "Bufanda de lana", Descripcion = "Bufanda tejida, temporada anterior.",
                 Categoria = "Accesorios", Talla = "M", Color = "Camel", Precio = 12990m, Stock = 8,
                 Estado = "Descontinuado", FechaRegistro = new DateTime(2023, 11, 5)
+            }
+        );
+
+        modelBuilder.Entity<Cliente>().HasData(
+            new Cliente
+            {
+                Id = 1, Nombre = "Maria", Apellido = "Gonzalez", TipoDocumento = "RUT",
+                NumeroDocumento = "12.345.678-9", Telefono = "+56 9 1234 5678",
+                Email = "maria.gonzalez@correo.cl", Direccion = "Av. Siempre Viva 742, Santiago",
+                Estado = "Activo", FechaRegistro = new DateTime(2024, 1, 20)
+            },
+            new Cliente
+            {
+                Id = 2, Nombre = "Carlos", Apellido = "Muñoz", TipoDocumento = "RUT",
+                NumeroDocumento = "23.456.789-0", Telefono = "+56 9 2345 6789",
+                Email = "carlos.munoz@correo.cl", Direccion = "Calle Los Olivos 154, Valparaiso",
+                Estado = "Activo", FechaRegistro = new DateTime(2024, 2, 14)
+            },
+            new Cliente
+            {
+                Id = 3, Nombre = "Ana", Apellido = "Lopez", TipoDocumento = "DNI",
+                NumeroDocumento = "34.567.890-1", Telefono = "+56 9 3456 7890",
+                Email = "ana.lopez@correo.cl", Direccion = "Pasaje El Sol 890, Concepcion",
+                Estado = "Activo", FechaRegistro = new DateTime(2024, 3, 8)
+            },
+            new Cliente
+            {
+                Id = 4, Nombre = "Pedro", Apellido = "Ramirez", TipoDocumento = "RUT",
+                NumeroDocumento = "45.678.901-2", Telefono = "+56 9 4567 8901",
+                Estado = "Inactivo", FechaRegistro = new DateTime(2024, 4, 22)
+            },
+            new Cliente
+            {
+                Id = 5, Nombre = "Sofia", Apellido = "Torres", TipoDocumento = "Pasaporte",
+                NumeroDocumento = "PT-123456", Telefono = "+56 9 5678 9012",
+                Email = "sofia.torres@correo.cl", Direccion = "Av. Del Mar 321, Viña del Mar",
+                Estado = "Activo", FechaRegistro = new DateTime(2024, 5, 5)
             }
         );
     }
