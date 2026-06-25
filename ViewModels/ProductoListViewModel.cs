@@ -5,7 +5,7 @@ using AlmacenesPorAhi.Helpers;
 using AlmacenesPorAhi.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui.Controls;            // Shell.Current, DisplayAlert
+using Microsoft.Maui.Controls;
 
 namespace AlmacenesPorAhi.ViewModels;
 
@@ -102,7 +102,7 @@ public partial class ProductoListViewModel : ObservableObject
     private async Task VerAsync(Producto? producto)
     {
         if (producto is null) return;
-        await Shell.Current.GoToAsync($"{nameof(ProductoFormPage)}?id={producto.Id}&ver=true");
+        await Shell.Current.GoToAsync($"{nameof(ProductoDetailPage)}?id={producto.Id}");
     }
 
     [RelayCommand]

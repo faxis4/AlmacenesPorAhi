@@ -15,7 +15,6 @@ namespace AlmacenesPorAhi.ViewModels;
 // [QueryProperty] recibe el "id" enviado en la navegacion: 0 = nuevo producto.
 // ============================================================================
 [QueryProperty(nameof(ProductoId), "id")]
-[QueryProperty(nameof(ModoLectura), "ver")]
 public partial class ProductoFormViewModel : ObservableObject
 {
     private readonly IProductoService _service;
@@ -28,7 +27,6 @@ public partial class ProductoFormViewModel : ObservableObject
         _service = service;
     }
 
-    // Opciones para los selectores (Picker) del formulario.
     public List<string> Tallas { get; } = new() { "XS", "S", "M", "L", "XL", "XXL" };
     public List<string> Estados { get; } = new() { "Activo", "Agotado", "Descontinuado" };
 
@@ -41,18 +39,9 @@ public partial class ProductoFormViewModel : ObservableObject
             _ = CargarProductoAsync(value);
     }
 
-    [ObservableProperty]
-    private bool modoLectura;
+    public bool ModoLectura => false;
+    public bool ModoEdicion => true;
 
-    partial void OnModoLecturaChanged(bool value)
-    {
-        if (value && ProductoId > 0)
-            Titulo = "Ver Producto";
-    }
-
-    public bool ModoEdicion => !ModoLectura;
-
-    // Campos enlazados al formulario.
     [ObservableProperty] private string nombre = string.Empty;
     [ObservableProperty] private string? descripcion;
     [ObservableProperty] private string categoria = string.Empty;
@@ -69,6 +58,22 @@ public partial class ProductoFormViewModel : ObservableObject
     private string? imagenUrl;
 
     public bool TieneImagen => !string.IsNullOrWhiteSpace(ImagenUrl);
+
+    public string Emoji => Categoria?.ToLower() switch
+    {
+        "poleras" => "👕",
+        "pantalones" => "👖",
+        "abrigos" => "🧥",
+        "accesorios" => "🧣",
+        "zapatos" => "👟",
+        "gorras" => "🧢",
+        "vestidos" => "👗",
+        "trajes" => "👔",
+        "deportes" => "⚽",
+        _ => "🛍️"
+    };
+
+    partial void OnCategoriaChanged(string value) => OnPropertyChanged(nameof(Emoji));
 
     [ObservableProperty] private string titulo = "Nuevo Producto";
 
@@ -87,8 +92,7 @@ public partial class ProductoFormViewModel : ObservableObject
         Estado = p.Estado;
         ImagenUrl = p.ImagenUrl;
         _fechaRegistro = p.FechaRegistro;
-        if (!ModoLectura)
-            Titulo = "Editar Producto";
+        Titulo = "Editar Producto";
     }
 
     // COMANDO: seleccionar una foto desde el equipo.

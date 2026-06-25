@@ -37,6 +37,10 @@ public class Cliente
     [Display(Name = "Telefono")]
     public string? Telefono { get; set; }
 
+    [StringLength(20)]
+    [Display(Name = "Genero")]
+    public string Genero { get; set; } = string.Empty;
+
     [StringLength(300, ErrorMessage = "La direccion no puede superar los 300 caracteres.")]
     [Display(Name = "Direccion")]
     public string? Direccion { get; set; }
@@ -60,4 +64,13 @@ public class Cliente
 
     [NotMapped]
     public string Inicial => string.IsNullOrWhiteSpace(Nombre) ? "?" : Nombre[0].ToString();
+
+    [NotMapped]
+    public string Emoji => Genero?.ToLower() switch
+    {
+        "mujer" => "👩",
+        "hombre" => "👨",
+        "otro" => "🧑",
+        _ => "👤"
+    };
 }

@@ -75,8 +75,21 @@ public class Producto
     [Display(Name = "Foto")]
     public string? ImagenUrl { get; set; }
 
-    // Propiedad calculada (no se guarda en la BD): indica si hay foto.
-    // Sirve para mostrar la imagen o un marcador de posicion en la interfaz.
     [NotMapped]
     public bool TieneImagen => !string.IsNullOrWhiteSpace(ImagenUrl);
+
+    [NotMapped]
+    public string Emoji => Categoria?.ToLower() switch
+    {
+        "poleras" => "👕",
+        "pantalones" => "👖",
+        "abrigos" => "🧥",
+        "accesorios" => "🧣",
+        "zapatos" => "👟",
+        "gorras" => "🧢",
+        "vestidos" => "👗",
+        "trajes" => "👔",
+        "deportes" => "⚽",
+        _ => "🛍️"
+    };
 }

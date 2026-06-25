@@ -8,7 +8,6 @@ using Microsoft.Maui.Controls;
 namespace AlmacenesPorAhi.ViewModels;
 
 [QueryProperty(nameof(ClienteId), "id")]
-[QueryProperty(nameof(ModoLectura), "ver")]
 public partial class ClienteFormViewModel : ObservableObject
 {
     private readonly IClienteService _service;
@@ -20,6 +19,7 @@ public partial class ClienteFormViewModel : ObservableObject
         _service = service;
     }
 
+    public List<string> Generos { get; } = new() { "Mujer", "Hombre", "Otro" };
     public List<string> Estados { get; } = new() { "Activo", "Inactivo" };
 
     [ObservableProperty]
@@ -31,21 +31,14 @@ public partial class ClienteFormViewModel : ObservableObject
             _ = CargarClienteAsync(value);
     }
 
-    [ObservableProperty]
-    private bool modoLectura;
-
-    partial void OnModoLecturaChanged(bool value)
-    {
-        if (value && ClienteId > 0)
-            Titulo = "Ver Cliente";
-    }
-
-    public bool ModoEdicion => !ModoLectura;
+    public bool ModoLectura => false;
+    public bool ModoEdicion => true;
 
     [ObservableProperty] private string rut = string.Empty;
     [ObservableProperty] private string nombre = string.Empty;
     [ObservableProperty] private string apellidoPaterno = string.Empty;
     [ObservableProperty] private string? apellidoMaterno;
+    [ObservableProperty] private string genero = string.Empty;
     [ObservableProperty] private string? email;
     [ObservableProperty] private string? telefono;
     [ObservableProperty] private string? direccion;
@@ -62,6 +55,7 @@ public partial class ClienteFormViewModel : ObservableObject
         Rut = c.Rut;
         Nombre = c.Nombre;
         ApellidoPaterno = c.ApellidoPaterno;
+        Genero = c.Genero;
         ApellidoMaterno = c.ApellidoMaterno;
         Email = c.Email;
         Telefono = c.Telefono;
@@ -69,8 +63,7 @@ public partial class ClienteFormViewModel : ObservableObject
         Preferencias = c.Preferencias;
         Estado = c.Estado;
         _fechaRegistro = c.FechaRegistro;
-        if (!ModoLectura)
-            Titulo = "Editar Cliente";
+        Titulo = "Editar Cliente";
     }
 
     [RelayCommand]
@@ -98,6 +91,7 @@ public partial class ClienteFormViewModel : ObservableObject
             Rut = Rut.Trim(),
             Nombre = Nombre.Trim(),
             ApellidoPaterno = ApellidoPaterno.Trim(),
+            Genero = Genero,
             ApellidoMaterno = ApellidoMaterno?.Trim(),
             Email = Email?.Trim(),
             Telefono = Telefono?.Trim(),

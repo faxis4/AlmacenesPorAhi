@@ -55,6 +55,11 @@ namespace AlmacenesPorAhi.Migrations
                     b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Genero")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(80)
@@ -87,6 +92,7 @@ namespace AlmacenesPorAhi.Migrations
                             Email = "maria.gonzalez@correo.cl",
                             Estado = "Activo",
                             FechaRegistro = new DateTime(2024, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Maria",
                             Preferencias = "Ropa de mujer, Accesorios",
                             Rut = "12.345.678-9",
@@ -101,6 +107,7 @@ namespace AlmacenesPorAhi.Migrations
                             Email = "carlos.munoz@correo.cl",
                             Estado = "Activo",
                             FechaRegistro = new DateTime(2024, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Carlos",
                             Preferencias = "Electronica, Deportes",
                             Rut = "23.456.789-0",
@@ -114,6 +121,7 @@ namespace AlmacenesPorAhi.Migrations
                             Email = "ana.lopez@correo.cl",
                             Estado = "Activo",
                             FechaRegistro = new DateTime(2024, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Ana",
                             Rut = "34.567.890-1",
                             Telefono = "+56 9 3456 7890"
@@ -124,6 +132,7 @@ namespace AlmacenesPorAhi.Migrations
                             ApellidoPaterno = "Ramirez",
                             Estado = "Inactivo",
                             FechaRegistro = new DateTime(2024, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Pedro",
                             Rut = "45.678.901-2",
                             Telefono = "+56 9 4567 8901"
@@ -137,6 +146,7 @@ namespace AlmacenesPorAhi.Migrations
                             Email = "sofia.torres@correo.cl",
                             Estado = "Activo",
                             FechaRegistro = new DateTime(2024, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Sofia",
                             Preferencias = "Libros, Musica",
                             Rut = "PT-123456",

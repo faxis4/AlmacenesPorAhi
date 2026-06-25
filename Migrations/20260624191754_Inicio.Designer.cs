@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AlmacenesPorAhi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260624170324_SemillaClientes")]
-    partial class SemillaClientes
+    [Migration("20260624191754_Inicio")]
+    partial class Inicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,11 @@ namespace AlmacenesPorAhi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Apellido")
+                    b.Property<string>("ApellidoMaterno")
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("ApellidoPaterno")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
@@ -54,22 +58,28 @@ namespace AlmacenesPorAhi.Migrations
                     b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Genero")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
-                    b.Property<string>("NumeroDocumento")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<string>("Preferencias")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Rut")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("Telefono")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("TipoDocumento")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -79,65 +89,71 @@ namespace AlmacenesPorAhi.Migrations
                         new
                         {
                             Id = 1,
-                            Apellido = "Gonzalez",
+                            ApellidoMaterno = "Lopez",
+                            ApellidoPaterno = "Gonzalez",
                             Direccion = "Av. Siempre Viva 742, Santiago",
                             Email = "maria.gonzalez@correo.cl",
                             Estado = "Activo",
                             FechaRegistro = new DateTime(2024, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Maria",
-                            NumeroDocumento = "12.345.678-9",
-                            Telefono = "+56 9 1234 5678",
-                            TipoDocumento = "RUT"
+                            Preferencias = "Ropa de mujer, Accesorios",
+                            Rut = "12.345.678-9",
+                            Telefono = "+56 9 1234 5678"
                         },
                         new
                         {
                             Id = 2,
-                            Apellido = "Muñoz",
+                            ApellidoMaterno = "Rojas",
+                            ApellidoPaterno = "Muñoz",
                             Direccion = "Calle Los Olivos 154, Valparaiso",
                             Email = "carlos.munoz@correo.cl",
                             Estado = "Activo",
                             FechaRegistro = new DateTime(2024, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Carlos",
-                            NumeroDocumento = "23.456.789-0",
-                            Telefono = "+56 9 2345 6789",
-                            TipoDocumento = "RUT"
+                            Preferencias = "Electronica, Deportes",
+                            Rut = "23.456.789-0",
+                            Telefono = "+56 9 2345 6789"
                         },
                         new
                         {
                             Id = 3,
-                            Apellido = "Lopez",
+                            ApellidoPaterno = "Lopez",
                             Direccion = "Pasaje El Sol 890, Concepcion",
                             Email = "ana.lopez@correo.cl",
                             Estado = "Activo",
                             FechaRegistro = new DateTime(2024, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Ana",
-                            NumeroDocumento = "34.567.890-1",
-                            Telefono = "+56 9 3456 7890",
-                            TipoDocumento = "DNI"
+                            Rut = "34.567.890-1",
+                            Telefono = "+56 9 3456 7890"
                         },
                         new
                         {
                             Id = 4,
-                            Apellido = "Ramirez",
+                            ApellidoPaterno = "Ramirez",
                             Estado = "Inactivo",
                             FechaRegistro = new DateTime(2024, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Pedro",
-                            NumeroDocumento = "45.678.901-2",
-                            Telefono = "+56 9 4567 8901",
-                            TipoDocumento = "RUT"
+                            Rut = "45.678.901-2",
+                            Telefono = "+56 9 4567 8901"
                         },
                         new
                         {
                             Id = 5,
-                            Apellido = "Torres",
+                            ApellidoMaterno = "Vargas",
+                            ApellidoPaterno = "Torres",
                             Direccion = "Av. Del Mar 321, Viña del Mar",
                             Email = "sofia.torres@correo.cl",
                             Estado = "Activo",
                             FechaRegistro = new DateTime(2024, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Genero = "",
                             Nombre = "Sofia",
-                            NumeroDocumento = "PT-123456",
-                            Telefono = "+56 9 5678 9012",
-                            TipoDocumento = "Pasaporte"
+                            Preferencias = "Libros, Musica",
+                            Rut = "PT-123456",
+                            Telefono = "+56 9 5678 9012"
                         });
                 });
 

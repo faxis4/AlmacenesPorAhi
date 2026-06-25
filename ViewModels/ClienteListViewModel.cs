@@ -71,7 +71,7 @@ public partial class ClienteListViewModel : ObservableObject
     private async Task VerAsync(Cliente? cliente)
     {
         if (cliente is null) return;
-        await Shell.Current.GoToAsync($"{nameof(ClienteFormPage)}?id={cliente.Id}&ver=true");
+        await Shell.Current.GoToAsync($"{nameof(ClienteDetailPage)}?id={cliente.Id}");
     }
 
     [RelayCommand]

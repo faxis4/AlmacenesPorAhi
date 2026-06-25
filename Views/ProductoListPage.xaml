@@ -66,11 +66,10 @@
 
                             <Grid ColumnDefinitions="Auto,*" Padding="14" ColumnSpacing="14">
 
-                                <!-- Foto del producto (o marcador si no hay imagen) -->
                                 <Grid Grid.Column="0" WidthRequest="84" HeightRequest="84">
                                     <Border Background="#F1EADD" StrokeThickness="0"
                                             StrokeShape="RoundRectangle 12">
-                                        <Label Text="Sin foto" FontSize="11" TextColor="#B6A88E"
+                                        <Label Text="{Binding Emoji}" FontSize="32"
                                                HorizontalOptions="Center" VerticalOptions="Center" />
                                     </Border>
                                     <Border IsVisible="{Binding TieneImagen}" StrokeThickness="0"

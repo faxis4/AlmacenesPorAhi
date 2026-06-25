@@ -3,162 +3,141 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:AlmacenesPorAhi.ViewModels"
              x:Class="AlmacenesPorAhi.Views.ProductoFormPage"
+             x:Name="Pagina"
              x:DataType="vm:ProductoFormViewModel"
              Title="{Binding Titulo}"
              BackgroundColor="#FAF7F2">
 
     <ScrollView>
-        <Grid>
-        <VerticalStackLayout Padding="16" Spacing="16"
+        <VerticalStackLayout Padding="14" Spacing="14"
                              MaximumWidthRequest="600" HorizontalOptions="Center">
 
-            <Border Background="#FFFFFF" StrokeThickness="0" Padding="18"
+            <Border Background="#FFFFFF" StrokeThickness="0" Padding="14"
                     StrokeShape="RoundRectangle 16">
                 <Border.Shadow>
                     <Shadow Brush="#2D4236" Opacity="0.08" Radius="12" Offset="0,4" />
                 </Border.Shadow>
 
-                <VerticalStackLayout Spacing="16">
+                <VerticalStackLayout Spacing="12">
 
-                    <!-- Foto del producto -->
-                    <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                        <Grid WidthRequest="130" HeightRequest="130" HorizontalOptions="Center">
+                    <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Grid WidthRequest="100" HeightRequest="100" HorizontalOptions="Center">
                             <Border Background="#F1EADD" StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 16">
-                                <Label Text="Sin foto" FontSize="13" TextColor="#B6A88E"
+                                    StrokeShape="RoundRectangle 14">
+                                <Label Text="{Binding Emoji}" FontSize="36"
                                        HorizontalOptions="Center" VerticalOptions="Center" />
                             </Border>
                             <Border IsVisible="{Binding TieneImagen}" StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 16" IsClippedToBounds="True">
+                                    StrokeShape="RoundRectangle 14" IsClippedToBounds="True">
                                 <Image Source="{Binding ImagenUrl}" Aspect="AspectFill" />
                             </Border>
                         </Grid>
-                        <Button Text="Seleccionar foto" FontSize="13"
+                        <Button Text="Seleccionar foto" FontSize="16"
                                 BackgroundColor="Transparent" TextColor="#2D4236"
-                                BorderColor="#2D4236" BorderWidth="1"
-                                Command="{Binding SeleccionarFotoCommand}"
-                                IsVisible="{Binding ModoEdicion}" />
+                                BorderColor="#2D4236" BorderWidth="1" HeightRequest="32"
+                                Padding="10,0"
+                                Command="{Binding SeleccionarFotoCommand}" />
                     </VerticalStackLayout>
-
-                    <Border Background="#D4A373" StrokeThickness="0" Padding="10,6"
-                            StrokeShape="RoundRectangle 10" IsVisible="{Binding ModoLectura}">
-                        <Label Text="SOLO LECTURA" FontAttributes="Bold" FontSize="13"
-                               TextColor="#FFFFFF" HorizontalOptions="Center" />
-                    </Border>
 
                     <Label Text="Datos del producto" FontAttributes="Bold"
-                           FontSize="18" TextColor="#2D4236" />
+                           FontSize="16" TextColor="#2D4236" />
 
-                    <!-- Nombre -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Nombre" FontAttributes="Bold" FontSize="13" TextColor="#7A847C" />
-                        <Label Text="{Binding Nombre}" FontSize="15" TextColor="#1E2522"
-                               IsVisible="{Binding ModoLectura}" />
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Nombre" FontSize="16" TextColor="#7A847C" />
                         <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                StrokeShape="RoundRectangle 10" Padding="10,0"
-                                IsVisible="{Binding ModoEdicion}">
-                            <Entry Text="{Binding Nombre}" Placeholder="Ej: Polera basica" />
+                                StrokeShape="RoundRectangle 8" Padding="8,0" HeightRequest="42">
+                            <Entry Text="{Binding Nombre}" Placeholder="Ej: Polera basica"
+                                   FontSize="16" TextColor="#1E2522" />
                         </Border>
                     </VerticalStackLayout>
 
-                    <!-- Descripcion -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Descripcion" FontAttributes="Bold" FontSize="13" TextColor="#7A847C" />
-                        <Label Text="{Binding Descripcion}" FontSize="15" TextColor="#1E2522"
-                               IsVisible="{Binding ModoLectura}" />
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Descripcion" FontSize="16" TextColor="#7A847C" />
                         <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                StrokeShape="RoundRectangle 10" Padding="10,4"
-                                IsVisible="{Binding ModoEdicion}">
-                            <Editor Text="{Binding Descripcion}" Placeholder="Descripcion del producto (opcional)"
-                                    AutoSize="TextChanges" HeightRequest="70" />
+                                StrokeShape="RoundRectangle 8" Padding="8,4"
+                                HeightRequest="60">
+                            <Editor Text="{Binding Descripcion}"
+                                    Placeholder="Descripcion (opcional)"
+                                    FontSize="16" TextColor="#1E2522" AutoSize="TextChanges" />
                         </Border>
                     </VerticalStackLayout>
 
-                    <!-- Categoria -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Categoria" FontAttributes="Bold" FontSize="13" TextColor="#7A847C" />
-                        <Label Text="{Binding Categoria}" FontSize="15" TextColor="#1E2522"
-                               IsVisible="{Binding ModoLectura}" />
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Categoria" FontSize="16" TextColor="#7A847C" />
                         <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                StrokeShape="RoundRectangle 10" Padding="10,0"
-                                IsVisible="{Binding ModoEdicion}">
-                            <Entry Text="{Binding Categoria}" Placeholder="Ej: Poleras, Pantalones..." />
+                                StrokeShape="RoundRectangle 8" Padding="8,0" HeightRequest="42">
+                            <Entry Text="{Binding Categoria}" Placeholder="Ej: Poleras, Pantalones..."
+                                   FontSize="16" TextColor="#1E2522" />
                         </Border>
                     </VerticalStackLayout>
 
-                    <!-- Talla + Color -->
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-                        <VerticalStackLayout Grid.Column="0" Spacing="4">
-                            <Label Text="Talla" FontAttributes="Bold" FontSize="13" TextColor="#7A847C" />
-                            <Label Text="{Binding Talla}" FontSize="15" TextColor="#1E2522"
-                                   IsVisible="{Binding ModoLectura}" />
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Talla" FontSize="16" TextColor="#7A847C" />
+                        <HorizontalStackLayout Spacing="12"
+                                RadioButtonGroup.GroupName="talla"
+                                RadioButtonGroup.SelectedValue="{Binding Talla}">
+                            <RadioButton Content="XS" Value="XS" FontSize="14" TextColor="#1E2522" />
+                            <RadioButton Content="S" Value="S" FontSize="14" TextColor="#1E2522" />
+                            <RadioButton Content="M" Value="M" FontSize="14" TextColor="#1E2522" />
+                            <RadioButton Content="L" Value="L" FontSize="14" TextColor="#1E2522" />
+                            <RadioButton Content="XL" Value="XL" FontSize="14" TextColor="#1E2522" />
+                            <RadioButton Content="XXL" Value="XXL" FontSize="14" TextColor="#1E2522" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Color" FontSize="16" TextColor="#7A847C" />
+                        <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8" Padding="8,0" HeightRequest="42">
+                            <Entry Text="{Binding Color}" Placeholder="Ej: Azul"
+                                   FontSize="16" TextColor="#1E2522" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Estado" FontSize="16" TextColor="#7A847C" />
+                        <VerticalStackLayout Spacing="4"
+                                RadioButtonGroup.GroupName="estado"
+                                RadioButtonGroup.SelectedValue="{Binding Estado}">
+                            <RadioButton Content="Activo" Value="Activo" FontSize="15"
+                                         TextColor="#2D4236" />
+                            <RadioButton Content="Agotado" Value="Agotado" FontSize="15"
+                                         TextColor="#A4453A" />
+                            <RadioButton Content="Descontinuado" Value="Descontinuado" FontSize="15"
+                                         TextColor="#8A6A3E" />
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="3">
+                            <Label Text="Precio (CLP)" FontSize="16" TextColor="#7A847C" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                    StrokeShape="RoundRectangle 10" Padding="10,0"
-                                    IsVisible="{Binding ModoEdicion}">
-                                <Picker ItemsSource="{Binding Tallas}" SelectedItem="{Binding Talla}" Title="Talla" />
+                                    StrokeShape="RoundRectangle 8" Padding="8,0" HeightRequest="42">
+                                <Entry Text="{Binding Precio}" Keyboard="Numeric" Placeholder="0"
+                                       FontSize="16" TextColor="#1E2522" />
                             </Border>
                         </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Column="1" Spacing="4">
-                            <Label Text="Color" FontAttributes="Bold" FontSize="13" TextColor="#7A847C" />
-                            <Label Text="{Binding Color}" FontSize="15" TextColor="#1E2522"
-                                   IsVisible="{Binding ModoLectura}" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Stock" FontSize="16" TextColor="#7A847C" />
                             <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                    StrokeShape="RoundRectangle 10" Padding="10,0"
-                                    IsVisible="{Binding ModoEdicion}">
-                                <Entry Text="{Binding Color}" Placeholder="Ej: Azul" />
+                                    StrokeShape="RoundRectangle 8" Padding="8,0" HeightRequest="42">
+                                <Entry Text="{Binding Stock}" Keyboard="Numeric" Placeholder="0"
+                                       FontSize="16" TextColor="#1E2522" />
                             </Border>
                         </VerticalStackLayout>
                     </Grid>
-
-                    <!-- Precio + Stock -->
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-                        <VerticalStackLayout Grid.Column="0" Spacing="4">
-                            <Label Text="Precio (CLP)" FontAttributes="Bold" FontSize="13" TextColor="#7A847C" />
-                            <Label Text="{Binding Precio, StringFormat='$ {0:N0}'}" FontSize="15" TextColor="#1E2522"
-                                   IsVisible="{Binding ModoLectura}" />
-                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                    StrokeShape="RoundRectangle 10" Padding="10,0"
-                                    IsVisible="{Binding ModoEdicion}">
-                                <Entry Text="{Binding Precio}" Keyboard="Numeric" Placeholder="0" />
-                            </Border>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Grid.Column="1" Spacing="4">
-                            <Label Text="Stock" FontAttributes="Bold" FontSize="13" TextColor="#7A847C" />
-                            <Label Text="{Binding Stock}" FontSize="15" TextColor="#1E2522"
-                                   IsVisible="{Binding ModoLectura}" />
-                            <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                    StrokeShape="RoundRectangle 10" Padding="10,0"
-                                    IsVisible="{Binding ModoEdicion}">
-                                <Entry Text="{Binding Stock}" Keyboard="Numeric" Placeholder="0" />
-                            </Border>
-                        </VerticalStackLayout>
-                    </Grid>
-
-                    <!-- Estado -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Estado" FontAttributes="Bold" FontSize="13" TextColor="#7A847C" />
-                        <Label Text="{Binding Estado}" FontSize="15" TextColor="#1E2522"
-                               IsVisible="{Binding ModoLectura}" />
-                        <Border Background="#FFFFFF" Stroke="#EAE3D9" StrokeThickness="1"
-                                StrokeShape="RoundRectangle 10" Padding="10,0"
-                                IsVisible="{Binding ModoEdicion}">
-                            <Picker ItemsSource="{Binding Estados}" SelectedItem="{Binding Estado}" Title="Estado" />
-                        </Border>
-                    </VerticalStackLayout>
                 </VerticalStackLayout>
             </Border>
 
-            <Button Text="Guardar" HeightRequest="54"
+            <Button Text="Guardar" HeightRequest="44"
                     BackgroundColor="#E76F51" TextColor="#FFFFFF"
-                    FontAttributes="Bold" FontSize="16"
-                    Command="{Binding GuardarCommand}"
-                    IsVisible="{Binding ModoEdicion}" />
+                    FontAttributes="Bold" FontSize="15"
+                    Command="{Binding GuardarCommand}" />
 
-            <Button Text="Volver" HeightRequest="48"
+            <Button Text="Volver" HeightRequest="40"
                     BackgroundColor="Transparent" TextColor="#7A847C"
                     BorderColor="#D8D0C2" BorderWidth="1"
                     Command="{Binding CancelarCommand}" />
         </VerticalStackLayout>
-        </Grid>
     </ScrollView>
 </ContentPage>
